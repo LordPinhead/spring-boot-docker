@@ -1,0 +1,27 @@
+Just an example Project for Spring Boot with Docker and Spring Profiles.
+
+The RestControllers in an real project would not be with profiles, its just for shits and giggles.
+But the cache and repository controllers should be. It is just an test if it works, dont use this example
+in a real world project as a base, it just shows how to load the profiles.
+
+Usage:
+
+# for Dev
+mvn package && java -jar -Dspring.profiles.active=dev target/spring-boot-docker-0.0.1-SNAPSHOT.jar 
+
+# for Live
+mvn package && java -jar -Dspring.profiles.active=live target/spring-boot-docker-0.0.1-SNAPSHOT.jar
+
+# Pushing to Docker HUB
+mvn package docker:build && docker push <yourname>/spring-boot-docker
+
+# To Play around
+docker pull lordpinhead/spring-boot-docker
+
+# Start the Live Version
+docker run -e "SPRING_PROFILES_ACTIVE=live" -p 8080:8080 -t lordpinhead/spring-boot-docker
+
+# Start the Dev Version
+docker run -e "SPRING_PROFILES_ACTIVE=dev" -p 8080:8080 -t lordpinhead/spring-boot-docker
+
+Thats it folks!
